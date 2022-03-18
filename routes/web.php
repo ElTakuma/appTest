@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Livewire\Login;
+use App\Http\Livewire\Logout;
+use App\Http\Livewire\UserManager;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', UserManager::class)->middleware('auth');
+
+Route::get('/login', Login::class)->name('login');
+Route::get('/logout', Logout::class)->name('logout');
